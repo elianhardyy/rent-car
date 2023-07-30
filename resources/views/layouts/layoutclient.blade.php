@@ -24,6 +24,8 @@
 
   <!-- Template Main CSS File -->
   <link href="{{asset('css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('css/katalog.css')}}" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/bd20a423ca.js" crossorigin="anonymous"></script>
 
   <!-- =======================================================
   * Template Name: Sailor
@@ -37,22 +39,27 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
+  <header id="header" class="fixed-top d-flex align-items-center shadow p-3 mb-5 bg-body-tertiary rounded">
     <div class="container d-flex align-items-center">
 
       <h1 class="logo me-auto">Rental Mobil</h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="{{assets('img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar">
+      <nav id="navbar" class="navbar ">
         <ul>
           <li><a href="home">Home</a></li>
-          <li><a href="services.html">Katalog</a></li>
-          <li><a href="portfolio.html">Pengembalian</a></li>
-          <li><a href="pricing.html">Profile</a></li>
+          <li><a href="katalog">Katalog</a></li>
+       
+          <div class="peminjaman">
+            <li><a class="peminjaman-btn" id="peminjaman-btn">Peminjaman</a></li>
+            <span class="pmj-quantity">0</span>
+          </div>
+            
+         
           <li><a href="logout">Log Out</a></li>
 
-          <li><a href="logout.html" class="getstarted">Get Started</a></li>
+          <li><a href="katalog" class="getstarted">Get Started</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -60,8 +67,8 @@
     </div>
   </header><!-- End Header -->
 
-  <div class="body-content h-100">
-    <div class="content h-100"> 
+  <div class="body-content">
+    <div class="content "> 
         @yield('content')
     </div> 
 </div>
@@ -92,11 +99,9 @@
           <div class="col-lg-2 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Katalog</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Pengembalian</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Profile</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Log Out</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="home">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="katalog">Katalog</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="logout">Log Out</a></li>
             </ul>
           </div>
 
@@ -122,8 +127,8 @@
   <script src="{{asset('vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="{{asset('js/main.js"></script>
-
+  <script src="{{ asset('assets/js/main.js"></script>
+  <script src="{{ asset('assets/js/script.js"></script>
 </body>
 
 </html>

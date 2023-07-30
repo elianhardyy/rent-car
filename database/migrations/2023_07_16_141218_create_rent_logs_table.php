@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('rent_logs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('mobil_id');
-            $table->foreign('mobil_id')->references('id')->on('mobil');
+            $table->foreign('mobil_id')->references('id')->on('mobils');
             $table->date('rent_date');
-            $table->date('return_date');
+            $table->date('return_date')->nullable();
+            $table->string('KTP', 255)->nullable();
+            $table->string('SIM', 255)->nullable();
             $table->integer('total')->nullable();
             $table->timestamps();
         });

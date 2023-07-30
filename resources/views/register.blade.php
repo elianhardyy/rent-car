@@ -82,6 +82,14 @@ background: #eee;
                     </div>
                   </div>
 
+                  <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="role_id" ></label>
+                      <input type="hidden" id="role_id" name="role_id" value="2" class="form-control" >
+                    </div>
+                  </div>
+
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                     <button type="submit" class="btn btn-primary btn-lg">Register</button>
                   </div>

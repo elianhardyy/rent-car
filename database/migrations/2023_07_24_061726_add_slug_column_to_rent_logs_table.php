@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mobil', function (Blueprint $table) {
-            $table->id();
-            $table->string('nopol');
-            $table->string('nama mobil');
-            $table->integer('harga');
-            $table->string('status')->default('tersedia');
-            $table->timestamps();
+        Schema::table('rent_logs', function (Blueprint $table) {
+            $table->string('slug',255)->nullable()->after('SIM');
+
         });
     }
 
@@ -26,6 +22,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mobil');
+        Schema::table('rent_logs', function (Blueprint $table) {
+            if(Schema::hasColumn('rent_logs','slug')){
+                $table->dropColumn('slug');
+            }
+        });
     }
 };

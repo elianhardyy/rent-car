@@ -1,0 +1,86 @@
+.listPeminjaman{
+    display: none;
+    
+}
+.listPeminjaman.active{
+    display: block;
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    top:52px;
+    right:0;
+    box-shadow: 0 0 7px black;
+    background-color: white;
+    z-index: 5;
+    transition: all 1s;
+}
+.peminjaman-btn{
+    cursor: pointer;
+}
+.contianer.active{
+    transform:translateX(-200px);
+    width: 100px;
+}
+.cart-rent{
+    top: 90px;
+    display: grid;
+    grid-row: auto;
+    gap: 10px;
+}
+.cart-content{
+    display: flex;
+    column-gap: 10px;
+    margin-top: 50px;
+    margin-left: 5px;
+    top:90px;
+    
+}
+.cart-detail{
+    gap:2px
+}
+.cart-rent .cart-content .cart-detail .cart-price{
+    display: flex;
+    justify-content: flex-end;
+    top:0;
+}
+.cart-rent .cart-content .cart-detail input{
+    width: 50px;
+}
+.cart-rent .cart-content .cart-detail .cart-nominal{
+    display: flex;
+    column-gap: 5px;
+}
+.cart-rent .cart-content .cart-detail .cart-nominal button{
+    border: 5px white;
+    border-radius: 7px;
+}
+.cart-rent .cart-content .cart-close-btn{
+    cursor: pointer;
+}
+.cart .closePeminjaman{
+    cursor: pointer;
+}
+.cart{
+    display: flex;
+    justify-content: space-evenly;
+    bottom: 0;
+    
+}
+.cart .total{
+    background-color: black;
+    font-size: 24px;
+    margin: auto;
+    color: white;
+    width: 150px;
+    /* align-items: center; */
+    text-align: center;
+}
+.cart .closePeminjaman{
+    font-size: 24px;
+    background-color: orange;
+    color: black;
+    width: 150px;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+}

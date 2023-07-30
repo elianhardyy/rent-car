@@ -23,8 +23,9 @@ class CategorySeeder extends Seeder
         ];
 
         foreach ($data as $value){
-            Category::insert([
-                'name' => $value
+            Category::create([
+                'name' => $value,
+                
             ]);
         }
     }

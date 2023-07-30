@@ -2115,3 +2115,16 @@ section {
 #footer .credits a:hover {
   color: white;
 }
+
+ul .peminjaman .pmj-quantity{
+  background: red;
+  border-radius: 50%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+    color: #fff;
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    padding: 3px 10px;
+}

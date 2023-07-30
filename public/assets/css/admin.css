@@ -1,0 +1,29 @@
+.date-range{
+    display: flex;
+    flex-direction: row;
+    top:100px;
+    gap: 50px;
+    
+}
+.date-range .btn-add{
+    display: flex;
+    justify-content: end;
+    margin-left: 400px;
+}
+.date-range .from-date{
+    width: 200px;
+}
+.date-range .to-date{
+    width: 200px;
+}
+.date-range .date-range-detail{
+    display: flex;
+    flex-direction: column;
+}
+.date-range-submit{
+    align-items: center;
+    margin-top: 3px;
+}
+.user.none{
+    display: none;
+}

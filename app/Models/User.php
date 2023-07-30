@@ -6,11 +6,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -19,10 +20,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
+        'slug',
         'password',
         'phone',
         'address',
+        'role_id'
     ];
+
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,7 +49,20 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    protected $attributes = [
-        'role_id' => 2
-    ];
+    // protected $attributes = [
+    //     'role_id' => 2
+    // ];
+
+    public function sluggable(): array{
+        return[
+            'slug' => [
+                'source' => 'username'
+            ]
+            ];
+    }
+    public function rentlog()
+    {
+        return $this->hasMany(Rent_log::class);
+    }
+    
 }
