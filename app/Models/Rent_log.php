@@ -12,7 +12,7 @@ class Rent_log extends Model
     use Sluggable;
     public $timestamps = true;
  
-    public $fillable = ['user_id','mobil_id','rent_date','KTP','SIM','slug','total'];
+    public $fillable = ['user_id','mobil_id','rent_date','KTP','SIM','slug'];
     public function sluggable(): array{
         return [
             'slug'=>[

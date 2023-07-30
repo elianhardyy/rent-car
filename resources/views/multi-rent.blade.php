@@ -19,10 +19,16 @@
                   <h5 class="card-title">Vertical Form</h5>
     
                   <!-- Vertical Form -->
-                  <form class="row g-3" action="/rent-add" method="post" enctype="multipart/form-data">
+                  <form class="row g-3" action="/rent-multi-add" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                    <input type="hidden" name="mobil_id" value="{{ $mobil->id }}">
+                    @foreach ($user as $u)
+                    <input type="hidden" name="user_id[]" value="{{ $u }}">
+                        
+                    @endforeach
+                    @foreach ($mobil as $m )
+                    <input type="hidden" name="mobil_id[]" value="{{ $m }}">
+                        
+                    @endforeach
                     <div class="col-12">
                       <label for="inputNanme4" class="form-label">KTP</label>
                       <input type="file" class="form-control" id="imgKTP" name="KTP" onchange="piKTP()">

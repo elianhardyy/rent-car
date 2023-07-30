@@ -63,12 +63,16 @@
     
 </div>
 <div class="listPeminjaman">
+    <form action="/rent-add-multi" method="post">
+    @csrf
     <div class="cart-rent">
     @foreach ($katalog as $k )
                 
                 
     @endforeach
-</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>                    
         <br>
         <div class="cart">
             <div class="total">0</div>
@@ -204,8 +208,8 @@ function addToCart(title,text,price,mobil,user){
                 <div class="cart-detail">
                     <p class="cart-title">${title}</p>
                     <p class="cart-text">${text}</p>
-                   <input type="hidden" value="${mobil}" name="mobil_id">
-                   <input type="hidden"  value="${user}" name="user_id">
+                   <input type="hidden" value="${mobil}" name="mobil_id[]">
+                   <input type="hidden"  value="${user}" name="user_id[]">
                     <div class="cart-nominal">
                         <button class="minus-btn" hidden><i class="fa-solid fa-minus"></i></button>
                         <input type="hidden" name="" id="" class="quantity" value="1">

@@ -33,12 +33,12 @@
                     <table class="table table-bordered" >
                     <thead>
                       <tr>
-                        <th>Train Number</th>
-                        <th>Train</th>
-                        <th>Departure</th>
-                        <th>Arrival</th>
-                        <th>Dep.Time</th>
-                        <th>Fare</th>
+                        <th>Nama Mobil</th>
+                        <th>Harga</th>
+                        <th>KTP</th>
+                        <th>SIM</th>
+                        <th>Tanggal Peminjaman</th>
+                        <th>Tanggal Kembali</th>
                       </tr>
                     </thead>
                     <form action="/rent-edit/{{ $rent->mobil->slug }}/{{$rent->id}}" method="post">
@@ -49,8 +49,12 @@
                         <td>{{ number_format($rent->mobil->harga) }}</td>
                         <td><img src="{{ asset('storage/'.$rent->KTP)}}" alt="" width="120px" height="60px"></td>
                         <td><img src="{{ asset('storage/'.$rent->SIM) }}" alt="" width="120px" height="60px"></td>
-                        <td>{{ $rent->rent_date }}</td>
+                        <td>{{ date('l d-M-Y',strtotime($rent->rent_date)) }}</td>
+                        @if ($rent->return_date == null)
                         <td><input type="date" name="return_date" id=""></td>
+                        @else
+                        <td>{{ date('l d-M-Y',strtotime($rent->return_date)) }}</td>
+                        @endif
                       </tr>
                       <hr>
                         
@@ -60,6 +64,7 @@
                 </div>
               </div>
               <hr>
+              @if ($rent->mobil->status == "Tersedia")
               <div class="row invoice-footer">
                   <div class="col-lg-12">
                       @csrf
@@ -68,6 +73,16 @@
                     </form>
                   </div>
                 </div>
+              @else
+              <div class="row invoice-footer">
+                  <div class="col-lg-12">
+                      
+                      <button id="print" type="submit" class="btn btn-space btn-danger" disabled>Dipinjam</button>
+                    
+                  </div>
+                </div>
+
+              @endif
             </div>
           </div>
         </div>
