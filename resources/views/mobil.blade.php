@@ -42,7 +42,7 @@
         <td>{{$item->status}}</td>
         <td>
             <a href="mobil-edit/{{$item->slug}}"><i class='bi bi-pencil'></i></a>|
-            <a href="mobil-delete/{{$item->slug}}"><i class='bi bi-trash'></i></a>
+            <a href="mobil-delete/{{$item->id}}"><i class='bi bi-trash'></i></a>
         </td>
 </tr>
 @endforeach

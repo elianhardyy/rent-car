@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mobil;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MobilController extends Controller
 {
@@ -70,10 +71,12 @@ class MobilController extends Controller
         return redirect('mobil')->with('status', 'Katalog Berhasil Diubah');
     }
 
-    public function delete($slug)
+    public function delete($id)
     {
-        $mobil = Mobil::where('slug', $slug)->first();
-        $mobil->delete();
+        $mobil = Mobil::where('id',$id)->first();
+        Storage::delete($mobil->cover);
+        //dd($mobil->cover);
+        Mobil::where('id', $id)->delete();
         return redirect('mobil')->with('status', 'Data Mobil Berhasil Dihapus');
     }
 

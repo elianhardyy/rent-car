@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('mobil_id');
-            $table->foreign('mobil_id')->references('id')->on('mobils');
+            $table->foreign('mobil_id')->references('id')->on('mobils')->onUpdate('cascade')->onDelete('cascade');
             $table->date('rent_date');
             $table->date('return_date')->nullable();
             $table->string('KTP', 255)->nullable();

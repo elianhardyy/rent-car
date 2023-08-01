@@ -55,7 +55,7 @@ Route::get('mobil-add', [MobilController::class, 'add']);
 Route::post('mobil-add', [MobilController::class, 'store']);
 Route::get('mobil-edit/{slug}', [MobilController::class, 'edit']);
 Route::post('mobil-edit/{slug}', [MobilController::class, 'update']);
-Route::get('mobil-delete/{slug}', [MobilController::class, 'delete']);
+Route::get('mobil-delete/{id}', [MobilController::class, 'delete']);
 
 Route::get('datarental', [RentalController::class, 'index']);
 Route::get('rent-edit/{slug}',[RentalController::class,'edit'])->name('rent-edit');
@@ -66,3 +66,4 @@ Route::get('/date-range-filter',[RentalController::class,'filter'])->name('filte
 Route::get('rent-status/{slug}',[RentalController::class,'delete'])->name('delete-rent');
 Route::post('rent-add-multi',[RentalController::class,'add'])->name('rent-add');
 Route::post('rent-multi-add',[RentalController::class,'multirent']);
+Route::get('cetak-pdf',[RentalController::class,'cetakpdf'])->name('cetak-pdf');

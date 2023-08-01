@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Mobil;
 use App\Models\Rent_log;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
+//use PDF;
 use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
@@ -77,8 +80,8 @@ class RentalController extends Controller
     }
     public function edit($slug)
     {
-            $slugcrypt = Crypt::decrypt($slug);
-            $rent = Rent_log::with('user')->with('mobil')->where('slug',$slugcrypt)->first();
+            
+            $rent = Rent_log::with('user')->with('mobil')->where('slug',$slug)->first();
             return view('rental-edit',["rent"=>$rent]);
     }
     public function update(Request $request,$slug,$id)
@@ -129,5 +132,39 @@ class RentalController extends Controller
             'status'=>'Tersedia',
            ]);
            return redirect('datarental')->with('status','Data Rental Berhasil Dikembalikan');
+        }
+        public function cetakpdf(Request $request)
+        {   $categorydate = $request->category_date_select_cetak;
+            
+            $from = $request->from_cetak;
+            $to = $request->to_cetak;
+            
+            switch ($categorydate) {
+                case 'return_date':
+                    $datarental = Rent_log::with('user')->with('mobil')->whereBetween('return_date',[$from,$to])->orderBy('created_at','desc')->get();
+                    $users = User::where('role_id',2)->get();
+                    $title = 'Mobil Kembali';
+                    $pdf = Pdf::loadView('cetak-rental',compact('datarental','users','from','to','title'));
+                    return $pdf->stream('cetak-return-date');
+                    break;
+                case 'rent_date':
+                    $datarental = Rent_log::with('user')->with('mobil')->whereBetween('rent_date',[$from,$to])->orderBy('created_at','desc')->get();
+                    $users = User::where('role_id',2)->get();
+                    $title = 'Mobil Pinjam';
+                    $pdf = Pdf::loadView('cetak-rental',compact('datarental','users','from','to','title'));
+                    return $pdf->stream('cetak-rent-date');
+                    break;
+                case 'return_user_date':
+                    $rentuserdate = $request->return_user_date_cetak;
+                    $users = User::where('role_id',2)->get();
+                    $rental = Rent_log::with('user')->with('mobil')->where('user_id',$rentuserdate)->whereBetween('return_date',[$from,$to])->orderBy('created_at','desc')->get();
+                    $title = 'Mobil Kembali dan Pengguna';
+                    $pdf = Pdf::loadView('cetak-rental',compact('datarental','users','from','to','title'));
+                    return $pdf->stream('cetak-rental-user');
+                    break;
+                }
+
+
+
         }
 }

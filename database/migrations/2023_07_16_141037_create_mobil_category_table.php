@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('mobil_category', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('mobil_id');
-            $table->foreign('mobil_id')->references('id')->on('mobils');
+            $table->foreign('mobil_id')->references('id')->on('mobils')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

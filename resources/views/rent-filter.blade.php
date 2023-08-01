@@ -27,7 +27,7 @@
             <select name="category_date_select" id="category_date" onchange="category()" class="form-select">
               <option value="rent_date">Mobil Pinjam</option>
               <option value="return_date">Mobil Kembali</option>
-              <option value="created_at">Waktu Peminjaman</option>
+              
               <option value="return_user_date">Mobil Kembali dan Pengguna</option>
             </select>
            </div>
@@ -79,7 +79,7 @@
         <th scope="col">ID</th>
         <th scope="col">Mobil Pinjam</th>
         <th scope="col">Mobil Kembali</th>
-        <th scope="col">Waktu Peminjaman</th>
+     
         <th scope="col">Pengguna</th>
         <th scope="col">KTP</th>
         <th scope="col">SIM</th>
@@ -98,7 +98,6 @@
           <td>{{date('l d-M-Y',strtotime($item->return_date))}}</td>
 
           @endif
-          <td>{{date('l d-M-Y H:i:s',strtotime($item->created_at))}}</td>
           <td>{{$item->user->username}}</td>
           <td><img src="{{ asset('storage/'.$item->KTP)}}" alt="" width="120px" height="60px"></td>
           <td><img src="{{ asset('storage/'.$item->SIM) }}" alt="" width="120px" height="60px"></td>
@@ -111,6 +110,13 @@
   @endforeach
     </tbody>
   </table>
+  <form action="cetak-pdf" method="get" target="_blank">
+    <input type="hidden" name="category_date_select_cetak" value="{{ request()->get('category_date_select') }}">
+    <input type="hidden" name="return_user_date_cetak" value="{{ request()->get('return_user_date') }}">
+    <input type="hidden" name="from_cetak" value="{{ request()->get('from') }}">
+    <input type="hidden" name="to_cetak" value="{{ request()->get('to') }}">
+    <button type="submit" class="btn btn-primary">Cetak</button>
+  </form>
 </div>
 <script>
   var fromDate = document.getElementById("from-date");
